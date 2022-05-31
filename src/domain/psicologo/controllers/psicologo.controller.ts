@@ -1,7 +1,7 @@
-import { Psicologos } from "../models/psicologos";
-import { Request, Response } from "express";
+import { Psicologos } from "../models/psicologos"; 
+import { Request, Response} from "express";
 import bcrypt from "bcryptjs";
-import { psicologoService } from "./../services/";
+import { psicologoService } from "../services";
 
 export const PsicologoController = {
   async create(req: Request, res: Response) {
@@ -10,7 +10,8 @@ export const PsicologoController = {
       
       return res.status(201).json(newPsicologo);
     } catch (error) {
-      return res.status(500).json("Deu erro, chame o batman");
+      console.log(error)
+      return res.status(500).json("Algo errado aconteceu, chame o batman!");
     }
   },
 
