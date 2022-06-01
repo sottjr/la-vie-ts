@@ -1,6 +1,6 @@
 import { Psicologos } from "../models/psicologos";
 import bcrypt from "bcryptjs";
-import { viaCepApi } from "../../../infrastructure/viaCep";
+import { viaCepApi } from "../../../infrastructure/viaCEP";
 
 export class PsicologoService {
 
@@ -12,8 +12,10 @@ export class PsicologoService {
         const newPsicologo = await Psicologos.create({
         ...data,
         senha: newSenha,
-        bairro: this.getBairro(cep)
+        bairro: await this.getBairro(cep)
         });
+
+        return newPsicologo
     }
 
     async getBairro(cep: string){
